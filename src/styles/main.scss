@@ -1,0 +1,26 @@
+// variables
+@import 'variables';
+
+// base & layout
+@import 'base';
+@import 'breakpoints';
+
+// colors
+@import "colors";
+
+// pages
+@import 'pages/home';
+@import 'pages/blog';
+
+// sections
+@import 'sections/recent_blogs';
+
+// components
+@import 'components/navbar';
+@import 'components/main_blog';
+@import 'components/blog_card';
+@import 'components/blog_content';
+@import 'components/section_title';
+
+// utilities (margin, padding, opacity, etc)
+@import 'utilities';

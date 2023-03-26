@@ -1,0 +1,33 @@
+.blog-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    .blog-content-body {
+        line-height: 18pt;
+        font-size: 14pt;
+    }
+    .comments-title {
+        font-size: x-large;
+        font-weight: 600;
+    }
+    .blog-content-comment {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 100%;
+        .comment-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            .blog-content-comment-userimage {
+                border-radius: 9999px;
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+            .blog-content-comment-username {
+                font-weight: 600;
+                font-size: large;
+            }
+        }
+    }
+}

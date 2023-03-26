@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation, useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setMainBlog } from "./redux/slices/mainBlogSlice";
+import { setRecentBlogs } from "./redux/slices/recentBlogsSlice";
+
+import blogs from "./db/blog.json";
+
+import Home from "./pages/Home";
+import Header from "./components/layout/Header/Header";
+import Blog from "./pages/Blog";
 
 function App() {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  let [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, searchParams]);
+
+  useEffect(() => {
+    dispatch(setMainBlog(blogs[0]));
+    dispatch(setRecentBlogs(blogs));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <Header />
       </header>
+      <main>
+        <Routes>
+          <Route path="/blog" element={<Blog />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
     </div>
   );
 }

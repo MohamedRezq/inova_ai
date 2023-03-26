@@ -1,0 +1,26 @@
+[
+    {
+        "model_id":"model101",
+        "title":"Good Product",
+        "creator_id":"2",
+        "preview_media":"model101.jpg",
+        "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, iusto.",
+        "modelAPI":"https://model.com/activate_api",
+        "summary":"Lorem ipsum dolor, sit.",
+        "price":200000,
+        "implementation_price":10000,
+        "documentation":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, iusto."
+    },
+    {
+        "model_id":"model102",
+        "title":"Nice Product",
+        "creator_id":"1",
+        "preview_media":"model102.jpg",
+        "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, iusto.",
+        "modelAPI":"https://model.com/activate_api",
+        "summary":"Lorem Larisum pita, sit.",
+        "price":150000,
+        "implementation_price":5000,
+        "documentation":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, iusto."
+    }
+]

@@ -1,0 +1,35 @@
+@media (min-width: map-get($breakpoints, "lg")) {
+  .blog-page {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    column-gap: 4.5%;
+    .blog-content-wrapper {
+      width: 100%;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+    }
+  }
+}
+@media (max-width: map-get($breakpoints, "lg")) {
+  .blog-page {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    row-gap: 30px;
+  }
+}
+
+.blog-title {
+  font-size: calc(1em + 1vw);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
