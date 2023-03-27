@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { ArrowBarRight } from "react-bootstrap-icons";
-import blogs from "../db/blog.json";
-import { useAppSelector } from "../redux/hooks";
+import blogs from "../../db/blog.json";
+import { useAppSelector } from "../../redux/hooks";
 import { Container } from "react-bootstrap";
-import BlogContent from "../components/BlogContent";
+import BlogContent from "../../components/BlogContent";
 import { Link, useSearchParams } from "react-router-dom";
 
 const Blog = () => {;

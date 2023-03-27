@@ -6,7 +6,8 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Person } from "react-bootstrap-icons";
+import { Cart2, Person } from "react-bootstrap-icons";
+import { useAppSelector } from "../../../redux/hooks";
 
 const CustomToggle = React.forwardRef<any, any>(
   ({ children, onClick }, ref) => (
@@ -25,6 +26,7 @@ const CustomToggle = React.forwardRef<any, any>(
 );
 
 const Header = () => {
+  const cartItems = useAppSelector((state) => state.cartItems);
   return (
     <Navbar expand="md" id="navbar-container">
       <Container>
@@ -58,23 +60,32 @@ const Header = () => {
               </Button>
             </Form>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/models?page=1">Models</Nav.Link>
               <Dropdown align="end" className="header-links">
                 <Dropdown.Toggle as={Container} id="dropdown-categories">
                   Categories
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Sports</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
+                  <Dropdown.Item href="#/categories/sports">
+                    Sports
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/categories/business">
                     Business
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item href="/categories/ai">
                     Artifical Intelligence
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Nav.Link href="#action2">inova-ai</Nav.Link>
+              <Nav.Link href="/about">inova-ai</Nav.Link>
+              <Nav.Link id="cart-link" href="/cart?user-id=">
+                <Cart2 size={20}/>
+                {(cartItems.itemsCount !== 0) && (
+                  <span className="cart-items-count">{cartItems.itemsCount}</span>
+                )}
+              </Nav.Link>
               <Dropdown align="end" className="header-links">
                 <Dropdown.Toggle
                   as={CustomToggle}
@@ -91,8 +102,8 @@ const Header = () => {
                         border: "solid 1px gray",
                         borderRadius: "9999px",
                         padding: "5px",
-                        backgroundColor: 'white',
-                        cursor: "pointer"
+                        backgroundColor: "white",
+                        cursor: "pointer",
                       }}
                     />
                   )}

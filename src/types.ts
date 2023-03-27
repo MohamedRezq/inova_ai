@@ -16,5 +16,23 @@ export interface CommentType {
 }
 
 export interface BlogArrayType {
-  blogs: BlogType[]
+  blogs: BlogType[];
+}
+
+export interface ProductType {
+  model_id: string;
+  title: string;
+  creator_id: string;
+  preview_media: string;
+  description: string;
+  modelAPI: string;
+  summary: string;
+  price: number;
+  implementation_price: number;
+  documentation: string;
+}
+
+export interface CartType {
+  itemsCount: number;
+  items: ProductType[];
 }

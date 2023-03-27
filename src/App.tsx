@@ -9,6 +9,7 @@ import blogs from "./db/blog.json";
 import Home from "./pages/Home";
 import Header from "./components/layout/Header/Header";
 import Blog from "./pages/Blog";
+import Models from "./pages/Models";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/blog" element={<Blog />} />
+          <Route path="/models" element={<Models />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
