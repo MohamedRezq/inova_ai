@@ -32,7 +32,12 @@ export interface ProductType {
   documentation: string;
 }
 
+export interface CartItemType {
+  product: ProductType;
+  cartCount: number;
+}
+
 export interface CartType {
   itemsCount: number;
-  items: ProductType[];
+  items: CartItemType[];
 }

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { BlogType, CartType } from "../../types";
+import { BlogType, CartItemType, CartType } from "../../types";
 
 // Define the initial state using that type
 const initialState = {
@@ -12,16 +12,17 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItems: (state, action: PayloadAction<CartType>) => {
-      state.itemsCount += action.payload.itemsCount;
-      for (let i = 0; i < action.payload.itemsCount; i++) {
-        state.items.push(action.payload.items[0]);
-      }
+    addItems: (state, action: PayloadAction<CartItemType>) => {
+      state.itemsCount += action.payload.cartCount;
+      state.items.push({
+        cartCount: action.payload.cartCount,
+        product: action.payload.product,
+      });
     },
-    removeItems: (state, action: PayloadAction<CartType>) => {
+    removeItems: (state, action: PayloadAction<CartItemType>) => {
       //state.title = action.payload.title;
     },
-    clearCart: (state, action: PayloadAction<CartType>) => {
+    clearCart: (state, action: PayloadAction<CartItemType>) => {
       state = initialState;
     },
   },

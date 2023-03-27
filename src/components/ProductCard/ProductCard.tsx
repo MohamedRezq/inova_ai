@@ -15,13 +15,13 @@ const ProductCard = (props: { product: ProductType }) => {
     currency: "USD",
   });
   const addItemsToCart = async () => {
-    await dispatch(addItems({
-      itemsCount: itemCount,
-      items: [{
-        ...props.product
-      }]
-    }))
-  }
+    await dispatch(
+      addItems({
+        cartCount: itemCount,
+        product: props.product,
+      })
+    );
+  };
   //////////
   function PreviewModal(props: any) {
     return (

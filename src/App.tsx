@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Header from "./components/layout/Header/Header";
 import Blog from "./pages/Blog";
 import Models from "./pages/Models";
+import Cart from "./pages/Cart";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ function App() {
       </header>
       <main>
         <Routes>
+          <Route path="/cart" element={<Cart />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/models" element={<Models />} />
           <Route path="*" element={<Home />} />
