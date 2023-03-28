@@ -32,7 +32,6 @@ const CartItem = (props: { item: CartItemType }) => {
                 cartCount: itemCount,
                 product: props.item.product,
               }));
-              console.log("H2")
               setItemCount(itemCount - 1);
             }}
           >
@@ -46,7 +45,6 @@ const CartItem = (props: { item: CartItemType }) => {
                 cartCount: itemCount,
                 product: props.item.product,
               }));
-              console.log("H2")
               setItemCount(itemCount + 1);
             }}
           >

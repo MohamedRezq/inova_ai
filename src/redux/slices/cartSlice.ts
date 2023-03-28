@@ -45,7 +45,6 @@ export const cartSlice = createSlice({
             state.items[itemWithIdIndex].cartCount - action.payload.cartCount;
         }
         state.items[itemWithIdIndex].cartCount = action.payload.cartCount;
-        console.log("H1")
       }
     },
     clearCart: (state) => {

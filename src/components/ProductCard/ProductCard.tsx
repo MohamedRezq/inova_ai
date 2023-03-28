@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Carousel, Modal } from "react-bootstrap";
+import { Button, Carousel, Col, Modal, Row } from "react-bootstrap";
 import { Cart } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { ProductType } from "../../types";
@@ -35,46 +35,45 @@ const ProductCard = (props: { product: ProductType }) => {
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Carousel variant="dark">
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="/assets/products/model101.jfif"
-                alt="First slide"
-              />
-              <Carousel.Caption>
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="/assets/products/model101.jfif"
-                alt="Second slide"
-              />
-              <Carousel.Caption>
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="/assets/products/model101.jfif"
-                alt="Third slide"
-              />
-              <Carousel.Caption>
-                <h5>Third slide label</h5>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Carousel>
+          <Row>
+            <Col xs={12} lg={8}>
+              <Carousel variant="dark">
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={`/assets/products/${props.product.preview_media}`}
+                    alt={props.product.title}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={`/assets/products/${props.product.preview_media}`}
+                    alt={props.product.title}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={`/assets/products/${props.product.preview_media}`}
+                    alt={props.product.title}
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </Col>
+            <Col xs={12} lg={4} className='modal-product-info'>
+              <div className="modal-product-title">{props.product.title}</div>
+              <div className="product-card-rating">
+                <Rating count={5} value={4} edit={false} />
+              </div>
+              <div className="modal-product-price">
+                {priceFormatter.format(props.product.implementation_price)}
+              </div>
+              <div className="modal-product-description">
+                {props.product.description}
+              </div>
+            </Col>
+          </Row>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -156,6 +155,7 @@ const ProductCard = (props: { product: ProductType }) => {
       <PreviewModal
         show={previewModalShow}
         onHide={() => setPreviewModalShow(false)}
+        product={props.product}
       />
       <AddToCartModal
         show={addedModalShow}

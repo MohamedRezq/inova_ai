@@ -11,6 +11,8 @@ import Header from "./components/layout/Header/Header";
 import Blog from "./pages/Blog";
 import Models from "./pages/Models";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Success from "./pages/Success";
 
 function App() {
   const { pathname } = useLocation();
@@ -32,6 +34,8 @@ function App() {
       </header>
       <main>
         <Routes>
+          <Route path="/success" element={<Success />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/models" element={<Models />} />

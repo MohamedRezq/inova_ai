@@ -13,6 +13,7 @@
 @import 'pages/blog';
 @import 'pages/models';
 @import 'pages/cart';
+@import 'pages/checkout';
 
 // sections
 @import 'sections/recent_blogs';
@@ -24,6 +25,7 @@
 @import 'components/blog_content';
 @import 'components/section_title';
 @import 'components/product_card';
+@import 'components/payment_form';
 
 // utilities (margin, padding, opacity, etc)
 @import 'utilities';

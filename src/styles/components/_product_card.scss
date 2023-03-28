@@ -118,4 +118,27 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+  
+}
+.modal-body{
+  .carousel-inner{
+    height: 280px;
+  }
+  .modal-product-info{
+    .modal-product-title{
+      font-size: larger;
+      font-weight: bolder;
+    }
+    .product-card-rating {
+      .rating {
+        display: flex;
+        margin-bottom: 15px;
+      }
+    }
+    .modal-product-price{
+      font-weight: bold;
+      font-size: large;
+      margin-bottom: 10px;
+    }
+  }
 }
