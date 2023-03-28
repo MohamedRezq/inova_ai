@@ -1,8 +1,12 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import CartItem from "../../components/CartItem";
 import { useAppSelector } from "../../redux/hooks";
 
 const Cart = () => {
+  const [total, setTotal] = React.useState(0);
+  const [shipping, setShipping] = React.useState(1000);
+  const [promo, setPromo] = React.useState(0);
   const cartItems = useAppSelector((state) => state.cartItems);
   const priceFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -12,45 +16,26 @@ const Cart = () => {
     <Container className="cart-page">
       <div className="cart-page-title">Shopping Cart</div>
       <Row className="cart-section">
-        <Col className="cart-items">
+        <Col xs={12} lg={8} className="cart-items">
           {cartItems.items.map((item, i) => (
-            <Row key={i} className="cart-item-details">
-              <Col className="cart-item-image">
-                <img src="" alt="" />
-              </Col>
-              <Col className="cart-item-text">
-                <div className="cart-item-title">Title</div>
-                <div className="cart-item-summary">Summary</div>
-              </Col>
-              <Col className="cart-item-changeCount">
-                <div className="product-card-count">
-                  <button
-                    className="items-count-btn"
-                    onClick={() => {
-                      //setItemCount(itemCount - 1);
-                    }}
-                  >
-                    -
-                  </button>
-                  <div className="items-count">{item.cartCount}</div>
-                  <button
-                    className="items-count-btn"
-                    onClick={() => {
-                      //setItemCount(itemCount + 1);
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              </Col>
-              <Col className="cart-item-total-price">
-                {priceFormatter.format(
-                  item.cartCount * item.product.implementation_price
-                )}
-              </Col>
-              <Col className="cart-item-delete">Delete</Col>
-            </Row>
+            <CartItem key={i} item={item} />
           ))}
+        </Col>
+        <Col xs={12} lg={4} className="checkout-bar">
+          <div className="order-details">Order Details</div>
+          <div className="amount-title">Subtotal</div>
+          <div className="amount-value">
+            {priceFormatter.format(cartItems.subTotal)}
+          </div>
+          <div className="amount-title">Shipping</div>
+          <div className="amount-value">{priceFormatter.format(shipping)}</div>
+          <div className="amount-title">Enter Promo Code</div>
+          <input type="text" className="promo-code-input" />
+          <div id="total-price">Total Price</div>
+          <div id="total-price-value">
+            {priceFormatter.format(cartItems.subTotal + shipping - promo)}
+          </div>
+          <button className="checkout-btn">CHECKOUT</button>
         </Col>
       </Row>
     </Container>

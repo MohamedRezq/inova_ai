@@ -1,0 +1,116 @@
+.cart-page {
+  margin-top: 35px;
+  .cart-page-title {
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .cart-section {
+    row-gap: 25px;
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      .cart-item-details {
+        .cart-item-text {
+          .cart-item-title {
+            font-weight: bold;
+            white-space: nowrap;
+          }
+          .cart-item-summary {
+            color: gray;
+            font-size: small;
+          }
+        }
+        .product-card-count {
+          display: flex;
+          width: fit-content;
+          justify-content: center;
+          align-items: center;
+          border: solid 1px $form;
+          border-radius: 5px;
+          height: 30px;
+          .items-count-btn {
+            background-color: $form;
+            border: none;
+            width: 25px;
+            height: 100%;
+          }
+          .items-count-btn:hover {
+            background-color: $form-dark;
+          }
+          .items-count {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+        }
+        .cart-item-delete{
+            color: red;
+        }
+        .cart-item-delete:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+      }
+    }
+    .checkout-bar {
+      background-color: $form;
+      padding-left: 20px;
+      padding-right: 20px;
+      .order-details {
+        font-size: larger;
+        font-weight: 800;
+      }
+      .amount-title {
+        font-weight: 500;
+      }
+      #total-price {
+        font-size: larger;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+      }
+      #total-price-value {
+        font-size: large;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .amount-value {
+        margin-bottom: 20px;
+      }
+      .order-details {
+        font-weight: 500;
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      .promo-code-input {
+        background-color: white !important;
+        margin-bottom: 25px;
+        border: solid 1px gray;
+        height: 30px;
+        border-radius: 5px;
+      }
+      .promo-code-input {
+        width: 100%;
+        margin-top: 5px;
+        height: 35px;
+        padding-left: 15px;
+      }
+      .checkout-btn {
+        width: 100%;
+        margin-bottom: 30px;
+        border: solid 1px $primary;
+        background-color: $primary;
+        color: white;
+        border-radius: 5px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+      .checkout-btn:hover {
+        background-color: $primary-dark;
+      }
+    }
+  }
+}

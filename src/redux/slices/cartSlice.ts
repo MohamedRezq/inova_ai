@@ -5,6 +5,7 @@ import { BlogType, CartItemType, CartType } from "../../types";
 // Define the initial state using that type
 const initialState = {
   itemsCount: 0,
+  subTotal: 0,
   items: [],
 } as CartType;
 
@@ -18,16 +19,42 @@ export const cartSlice = createSlice({
         cartCount: action.payload.cartCount,
         product: action.payload.product,
       });
+      state.subTotal +=
+        action.payload.cartCount * action.payload.product.implementation_price;
     },
-    removeItems: (state, action: PayloadAction<CartItemType>) => {
-      //state.title = action.payload.title;
+    removeItems: (state, action: PayloadAction<string>) => {
+      const itemWithIdIndex = state.items.findIndex(
+        (item) => item.product.model_id === action.payload
+      );
+      if (itemWithIdIndex > -1) {
+        const it = JSON.parse(JSON.stringify(state.items[itemWithIdIndex]));
+        state.items.splice(itemWithIdIndex, 1);
+        state.itemsCount -= it.cartCount;
+      }
     },
-    clearCart: (state, action: PayloadAction<CartItemType>) => {
+    editItemsCount: (state, action: PayloadAction<CartItemType>) => {
+      const itemWithIdIndex = state.items.findIndex(
+        (item) => item.product.model_id === action.payload.product.model_id
+      );
+      if (itemWithIdIndex > -1) {
+        if (action.payload.cartCount > state.items[itemWithIdIndex].cartCount) {
+          state.itemsCount +=
+            action.payload.cartCount - state.items[itemWithIdIndex].cartCount;
+        } else {
+          state.itemsCount -=
+            state.items[itemWithIdIndex].cartCount - action.payload.cartCount;
+        }
+        state.items[itemWithIdIndex].cartCount = action.payload.cartCount;
+        console.log("H1")
+      }
+    },
+    clearCart: (state) => {
       state = initialState;
     },
   },
 });
 
-export const { addItems, removeItems, clearCart } = cartSlice.actions;
+export const { addItems, removeItems, clearCart, editItemsCount } =
+  cartSlice.actions;
 //export const getMainBlog = (state: RootState) => state.mainBlog;
 export default cartSlice.reducer;

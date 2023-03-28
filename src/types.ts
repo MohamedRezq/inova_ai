@@ -39,5 +39,6 @@ export interface CartItemType {
 
 export interface CartType {
   itemsCount: number;
+  subTotal: number;
   items: CartItemType[];
 }
