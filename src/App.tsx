@@ -22,10 +22,8 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname, searchParams]);
 
-  useEffect(() => {
-    dispatch(setMainBlog(blogs[0]));
-    dispatch(setRecentBlogs(blogs));
-  }, []);
+  dispatch(setMainBlog(blogs[0]));
+  dispatch(setRecentBlogs(blogs));
 
   return (
     <div className="App">
@@ -34,7 +32,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/success" element={<Success />} />
+          <Route path="/success" element={<Success orderNo="" />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/blog" element={<Blog />} />

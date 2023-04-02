@@ -5,7 +5,6 @@ import CartItem from "../../components/CartItem";
 import { useAppSelector } from "../../redux/hooks";
 
 const Cart = () => {
-  const [total, setTotal] = React.useState(0);
   const [shipping, setShipping] = React.useState(1000);
   const [promo, setPromo] = React.useState(0);
   const cartItems = useAppSelector((state) => state.cartItems);
@@ -13,10 +12,7 @@ const Cart = () => {
     style: "currency",
     currency: "USD",
   });
-  useEffect(() => {
-    
-  }, [cartItems])
-  
+
   return (
     <Container className="cart-page">
       <div className="cart-page-title">Shopping Cart</div>
@@ -40,7 +36,9 @@ const Cart = () => {
           <div id="total-price-value">
             {priceFormatter.format(cartItems.subTotal + shipping - promo)}
           </div>
-          <Link to='/checkout'><button className="checkout-btn">CHECKOUT</button></Link>
+          <Link to="/checkout">
+            <button className="checkout-btn">CHECKOUT</button>
+          </Link>
         </Col>
       </Row>
     </Container>

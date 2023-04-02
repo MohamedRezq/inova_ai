@@ -29,7 +29,7 @@ const CartItem = (props: { item: CartItemType }) => {
             className="items-count-btn"
             onClick={() => {
               dispatch(editItemsCount({
-                cartCount: itemCount,
+                cartCount: itemCount-1,
                 product: props.item.product,
               }));
               setItemCount(itemCount - 1);
@@ -42,7 +42,7 @@ const CartItem = (props: { item: CartItemType }) => {
             className="items-count-btn"
             onClick={() => {
               dispatch(editItemsCount({
-                cartCount: itemCount,
+                cartCount: itemCount+1,
                 product: props.item.product,
               }));
               setItemCount(itemCount + 1);

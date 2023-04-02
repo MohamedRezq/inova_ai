@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { BlogType, CartItemType, CartType } from "../../types";
+import { CartItemType, CartType } from "../../types";
 
 // Define the initial state using that type
 const initialState = {
@@ -19,8 +19,10 @@ export const cartSlice = createSlice({
         cartCount: action.payload.cartCount,
         product: action.payload.product,
       });
-      state.subTotal +=
-        action.payload.cartCount * action.payload.product.implementation_price;
+      state.subTotal = 0;
+      state.items.map((item) => {
+        state.subTotal += item.cartCount*item.product.implementation_price;
+      })
     },
     removeItems: (state, action: PayloadAction<string>) => {
       const itemWithIdIndex = state.items.findIndex(
@@ -46,6 +48,16 @@ export const cartSlice = createSlice({
         }
         state.items[itemWithIdIndex].cartCount = action.payload.cartCount;
       }
+      state.subTotal = 0;
+      state.items.map((item) => {
+        state.subTotal += item.cartCount*item.product.implementation_price;
+      })
+    },
+    calcaulateSubTotal: (state) => {
+      state.subTotal = 0;
+      state.items.map((item) => {
+        state.subTotal += item.cartCount*item.product.implementation_price;
+      })
     },
     clearCart: (state) => {
       state = initialState;
