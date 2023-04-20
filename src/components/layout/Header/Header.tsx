@@ -60,7 +60,7 @@ const Header = () => {
               </Button>
             </Form>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/invest">Invest</Nav.Link>
               <Nav.Link href="/models?page=1">Models</Nav.Link>
               <Dropdown align="end" className="header-links">
                 <Dropdown.Toggle as={Container} id="dropdown-categories">

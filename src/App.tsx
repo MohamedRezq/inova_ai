@@ -13,6 +13,7 @@ import Models from "./pages/Models";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
+import Invest from "./pages/Invest";
 
 function App() {
   const { pathname } = useLocation();
@@ -32,6 +33,7 @@ function App() {
       </header>
       <main>
         <Routes>
+          <Route path="/invest" element={<Invest />} />
           <Route path="/success" element={<Success orderNo="" />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
